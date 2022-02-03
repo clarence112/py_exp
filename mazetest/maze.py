@@ -82,6 +82,7 @@ screen = pygame.display.set_mode((300, 300))
 screen.fill((255, 255, 255))
 clock = pygame.time.Clock()
 feild[49][49] = tile((49, 49))
+feild[49][48] = tile((49, 48))
 pygame.display.flip()
 
 while True:
@@ -89,10 +90,10 @@ while True:
         if e.type == pygame.QUIT:
             quit(0)
 
-    print(len(next))
     if last.draw():
-        if len(next) > 0:
-            i = next.pop()
-            feild[i[0]][i[1]] = tile(i)
+        pass
+#        if len(next) > 0:
+#            i = next.pop()
+#            feild[i[0]][i[1]] = tile(i)
 
     pygame.display.flip()
