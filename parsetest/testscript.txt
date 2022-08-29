@@ -1,0 +1,23 @@
+#Start isn't needed, that's just the beginning of the file
+PLAYER.setFreeze(true, CONDITIONS.always)
+together { #runs every contained line at once, and waits for them to all finish
+    ACTOR1.translate(-5, 0, 1.5, CONDITIONS.always) #x, y, duration
+    ACTOR1.impulse(0, 3, CONDITIONS.onGround)
+    ACTOR1.lookLeft(CONDITIONS.always)
+}
+delay(0.25)
+ACTOR1.lookRight(CONDITIONS.always)
+if(PLAYER.hasItem(4)) {
+    together {
+        dialogue("npc_52_itemTest", ACTOR1.icon, 0) #duration of zero means wait for button
+        loop(4) {
+            ACTOR1.impulse(0, 3, CONDITIONS.onGround)
+            delay(0.15)
+        }
+    }
+} else {
+    dialogue("npc_52_noItem", ACTOR1.icon, 5) #You didn't define "a bit" so I just went with 5 seconds
+    ACTOR1.animate("shell", CONDITIONS.always)
+}
+disable()
+#automatically unfreezes player at end of file
